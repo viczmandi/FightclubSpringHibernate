@@ -1,0 +1,6 @@
+com\fightclub\model\User.class
+com\fightclub\dao\impl\UserDaoImpl.class
+com\fightclub\service\UserService.class
+com\fightclub\controller\UserController.class
+com\fightclub\service\impl\StudentServiceImpl.class
+com\fightclub\dao\UserDao.class
