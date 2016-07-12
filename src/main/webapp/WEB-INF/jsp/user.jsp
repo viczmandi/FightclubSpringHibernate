@@ -75,19 +75,19 @@
 	</form:form>
 	<br>
 	<table border="1">
-		<thead>User ID</thead>
-		<thead>First name</thead>
-		<thead>Last name</thead>
-		<thead>User name</thead>
-		<thead>Password</thead>
-		<thead>Email</thead>
-		<thead>Age</thead>
-		<thead>Gender</thead>
-		<thead>Phone number</thead>
-		<thead>Country</thead>
-		<thead>City</thead>
-		<thead>Address</thead>
-		<thead>Zip code</thead>
+		<th>User ID</th>
+		<th>First name</th>
+		<th>Last name</th>
+		<th>User name</th>
+		<th>Password</th>
+		<th>Email</th>
+		<th>Age</th>
+		<th>Gender</th>
+		<th>Phone number</th>
+		<th>Country</th>
+		<th>City</th>
+		<th>Address</th>
+		<th>Zip code</th>
 		<c:forEach items="${userList}" var="user">
 			<tr>
 				<td>${user.id}</td>

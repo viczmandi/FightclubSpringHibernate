@@ -106,6 +106,12 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
+		<!-- Validator -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.2.4.Final</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<testSourceDirectory>src/main/test</testSourceDirectory>

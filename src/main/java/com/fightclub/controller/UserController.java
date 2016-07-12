@@ -2,6 +2,8 @@ package com.fightclub.controller;
 
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -27,29 +29,33 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/user.do", method = RequestMethod.POST)
-	public String doActions(@ModelAttribute User user, BindingResult result, @RequestParam String action,
+	public String doActions(@ModelAttribute @Valid User user, BindingResult result, @RequestParam String action,
 			Map<String, Object> map) {
-		User userResult = new User();
-		switch (action.toLowerCase()) {
-		case "add":
-			userService.add(user);
-			userResult = user;
-			break;
-		case "edit":
-			userService.edit(user);
-			userResult = user;
-			break;
-		case "delete":
-			userService.delete(user.getId());
-			userResult = new User();
-			break;
-		case "search":
-			User searchedUser = userService.getUser(user.getId());
-			userResult = searchedUser != null ? searchedUser : new User();
-			break;
+		if (result.hasErrors()) {
+			return "/";
+		} else {
+			User userResult = new User();
+			switch (action.toLowerCase()) {
+			case "add":
+				userService.add(user);
+				userResult = user;
+				break;
+			case "edit":
+				userService.edit(user);
+				userResult = user;
+				break;
+			case "delete":
+				userService.delete(user.getId());
+				userResult = new User();
+				break;
+			case "search":
+				User searchedUser = userService.getUser(user.getId());
+				userResult = searchedUser != null ? searchedUser : new User();
+				break;
+			}
+			map.put("user", userResult);
+			map.put("userList", userService.getAllUsers());
+			return "user";
 		}
-		map.put("user", userResult);
-		map.put("userList", userService.getAllUsers());
-		return "user";
 	}
 }

@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.Email;
+
 @Entity
 public class User {
 	@Id
@@ -15,6 +17,7 @@ public class User {
 	@Column
 	private int age;
 	@Column
+	@Email
 	private String emailAddress;
 	@Column
 	private String firstName;
