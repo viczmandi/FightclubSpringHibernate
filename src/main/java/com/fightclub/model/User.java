@@ -1,43 +1,31 @@
 package com.fightclub.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 
 @Entity
 public class User {
 	@Id
-	@Column
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	@Column
 	private int age;
-	@Column
-	@Email
+	@Size(min = 1, message = "Please provide a valid email address")
+	@Email(message = "Please provide a valid email address")
 	private String emailAddress;
-	@Column
 	private String firstName;
-	@Column
 	private String lastName;
-	@Column
 	private String password;
-	@Column
 	private String userName;
-	@Column
 	private String gender;
-	@Column
 	private long phoneNumber;
-	@Column
 	private String country;
-	@Column
 	private String city;
-	@Column
 	private String address;
-	@Column
 	private int zipcode;
 
 	public User() {

@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1>Fightclub user data</h1>
-	<form:form action="user.do" method="POST" commandName="user">
+	<form:form action="user" method="POST" commandName="user">
 		<table>
 			<tr>
 				<td>User ID</td>
@@ -33,7 +33,7 @@
 			</tr>
 			<tr>
 				<td>Email</td>
-				<td><form:input path="emailAddress" /></td>
+				<td><form:input path="emailAddress" /><form:errors path="emailAddress" /></td>
 			</tr>
 			<tr>
 				<td>Age</td>
