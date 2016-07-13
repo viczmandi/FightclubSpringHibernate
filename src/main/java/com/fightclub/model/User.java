@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class User {
@@ -14,12 +14,12 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private int age;
-	@Size(min = 1, message = "Please provide a valid email address")
-	@Email(message = "Please provide a valid email address")
 	private String emailAddress;
 	private String firstName;
 	private String lastName;
 	private String password;
+	@NotEmpty(message = "User name is required!")
+	@Size(min = 1, message = "Must be longer than 1 character!")
 	private String userName;
 	private String gender;
 	private long phoneNumber;

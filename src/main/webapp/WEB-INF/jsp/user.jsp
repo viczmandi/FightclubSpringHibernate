@@ -25,7 +25,7 @@
 			</tr>
 			<tr>
 				<td>User name</td>
-				<td><form:input path="userName" /></td>
+				<td><form:input path="userName" /><form:errors path="userName" /></td>
 			</tr>
 			<tr>
 				<td>Password</td>
@@ -33,7 +33,7 @@
 			</tr>
 			<tr>
 				<td>Email</td>
-				<td><form:input path="emailAddress" /><form:errors path="emailAddress" /></td>
+				<td><form:input path="emailAddress" /></td>
 			</tr>
 			<tr>
 				<td>Age</td>

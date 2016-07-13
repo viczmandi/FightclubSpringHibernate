@@ -29,35 +29,36 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/user", method = RequestMethod.POST)
-	public String doActions(@Valid @ModelAttribute User user, BindingResult result, @RequestParam String action,
+	public String doActions(@Valid @ModelAttribute("user") User user, BindingResult result, @RequestParam String action,
 			Map<String, Object> map) {
 		if (result.hasErrors()) {
-			return "/user";
-		}
-		User userResult = new User();
-		switch (action.toLowerCase()) {
-		case "add":
-			userService.add(user);
-			userResult = user;
-			break;
-		case "edit":
-			userService.edit(user);
-			userResult = user;
-			break;
-		case "delete":
-			if (userService.getUser(user.getId()) != null) {
-				userService.delete(user.getId());
-			} else {
-				userResult = new User();
+			return "user";
+		} else {
+			User userResult = new User();
+			switch (action.toLowerCase()) {
+			case "add":
+				userService.add(user);
+				userResult = user;
+				break;
+			case "edit":
+				userService.edit(user);
+				userResult = user;
+				break;
+			case "delete":
+				if (userService.getUser(user.getId()) != null) {
+					userService.delete(user.getId());
+				} else {
+					userResult = new User();
+				}
+				break;
+			case "search":
+				User searchedUser = userService.getUser(user.getId());
+				userResult = searchedUser != null ? searchedUser : new User();
+				break;
 			}
-			break;
-		case "search":
-			User searchedUser = userService.getUser(user.getId());
-			userResult = searchedUser != null ? searchedUser : new User();
-			break;
+			map.put("user", userResult);
+			map.put("userList", userService.getAllUsers());
+			return "user";
 		}
-		map.put("user", userResult);
-		map.put("userList", userService.getAllUsers());
-		return "user";
 	}
 }
